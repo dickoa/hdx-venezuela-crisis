@@ -47,7 +47,11 @@ function onEachFeature(feature, layer) {
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
-  layer.bindPopup('<h4>' + feature.properties.name + '</h4><h5>Number of people from Venezuela: ' + feature.properties.venezuelan + '</a></h5>');
+  if (feature.properties.destination == 'yes') {
+    layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4><h5>Number of people from Venezuela: <b>' + numeral(feature.properties.venezuelan).format('0,0') + '</b></h5>');
+  } else {
+    layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4>');
+  }
 }  
 
 function style(feature) {
