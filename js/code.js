@@ -12,6 +12,17 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/traffic-day-v2/tiles/256/{z
 
 var geojson;
 
+function getColor2(d) {
+  return d === 'More than 500,000'  ? "#de2d26" :
+    d === 'Between 200,000 and 300,000'  ? "#377eb8" :
+    d === 'Between 100,000 and 200,000' ? "#4daf4a" :
+    d === 'Between 50,000 and 100,000' ? "#4daf4a" :
+    d === 'Between than 10,000 and 50,000' ? "#984ea3" :
+    "#ff7f00";
+}
+
+var legend = L.control({position: 'bottomright'});
+
 function getColor(d) {
   return d > 600000 ? '#800026' :
     d > 300000  ? '#BD0026' :
@@ -41,6 +52,7 @@ function highlightFeature(e) {
 function resetHighlight(e) {
   geojson.resetStyle(e.target);
 }
+
 
 function onEachFeature(feature, layer) {
   layer.on({
@@ -72,8 +84,16 @@ function style(feature) {
       //dashArray: '3',
       fillOpacity: 0.5
     };
+  } else if (feature.properties.destination == 'bg') {
+    return {
+      fillColor: '#D3D3D3',
+      weight: 2,
+      opacity: 1,
+      color: 'white',
+      //dashArray: '3',
+      fillOpacity: 1
+    };
   }
-  
 }
 
 
@@ -81,3 +101,23 @@ geojson = L.geoJson(crisis, {
   style: style,
   onEachFeature: onEachFeature
 }).addTo(map);
+
+
+legend.onAdd = function (map) {
+  var div = L.DomUtil.create('div', 'info legend');
+  labels = ['<strong>Categories</strong>'],
+  categories = ['More than 500,000','Between 200,000 and 300,000','Between 100,000 and 200,000','Between 50,000 and 100,000', 'Between 10,000 and 50,000', 'Less than 10,000'];
+  
+  for (var i = 0; i < categories.length; i++) {
+    
+    div.innerHTML += 
+      labels.push(
+        '<i class="circle" style="background:' + getColor2(categories[i]) + '"></i> ' +
+	  (categories[i] ? categories[i] : '+'));
+    
+  }
+  div.innerHTML = labels.join('<br>');
+  return div;
+};
+
+legend.addTo(map);

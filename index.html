@@ -11,7 +11,13 @@
     <script src="js/jquery.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="data/crisis.js"></script>
-
+    <style>
+      /* css to customize Leaflet default styles  */
+      .popupCustom .leaflet-popup-tip,
+      .popupCustom .leaflet-popup-content-wrapper {
+	  color: #234c5e;
+      }
+    </style>
 </head>
 
 <body>
@@ -24,18 +30,10 @@
         </div>
         <div id="header"></div>
 
-        <div class="map" id="map">
+        <div class="popupCustom" id="map">
         </div>
     </div>
     <script src="js/code.js"></script>
-    <style>
-      /* css to customize Leaflet default styles  */
-      .popupCustom .leaflet-popup-tip,
-      .popupCustom .leaflet-popup-content-wrapper {
-	  background: #e0e0e0;
-	  color: #234c5e;
-      }
-</style>
 </body>
 
 </html>
