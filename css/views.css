@@ -1,0 +1,52 @@
+/*#fulltitle{
+  background-color: #C6C6C6;
+
+}*/
+
+#h2 {
+    font-family: 'Helvetica Neue';
+    font-size: 22px;
+    font-weight: 300;
+    text-align: center;
+    /*color: #e41a1c ;*/
+    color: #3182bd;
+}
+
+#map {
+    width: 300;
+    height: 600px;
+}
+
+#header {
+    border-bottom-color: #dddddd;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/17px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+#description {
+    font-size: 12px;
+    font-style: italic;
+}
