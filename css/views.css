@@ -39,10 +39,13 @@
     color: #555;
 }
 
+
+
 .legend i {
     width: 18px;
     height: 18px;
-    margin-right: 8px;
+    margin-right: 5px;
+    float: left;
     opacity: 0.7;
 }
 
