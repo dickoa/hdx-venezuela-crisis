@@ -37,7 +37,6 @@ function getColor(d) {
     d > 10000 ? '#4cc06cff' :
     d > 2500 ? '#9ed93aff' :
     '#fde725ff';
-}
 
 function onEachFeature(feature, layer) {
 layer.on({
@@ -45,7 +44,7 @@ layer.on({
     mouseout: resetHighlight,
 });
 if (feature.properties.destination == 'yes') {
-    layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4><h5>Number of people from Venezuela: <b>' + numeral(feature.properties.venezuelan).format('0a') + '</b></h5>');
+    layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4><h5>Number of people from Venezuela: <b>' + numeral(feature.properties.venezuelan).format('0,0') + '</b></h5>');
 } else {
     layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4>');
 }
@@ -57,7 +56,7 @@ layer.on({
     mouseout: resetHighlight,
 });
 if (feature.properties.destination == 'yes') {
-    layer.bindPopup('<h6><strong>' + feature.properties.name + '</h6>' + numeral(feature.properties.venezuelan).format('0a') + '</b>');
+    layer.bindPopup('<h6><strong>' + feature.properties.name + '</h6>' + numeral(feature.properties.venezuelan).format('0a) + '</b></p>');
 } else {
     layer.bindPopup('<p class="small"><strong>' + feature.properties.name + '</strong></p>');
 }
@@ -109,7 +108,7 @@ function getColor2(d) {
     d === 'Between 50,000 and 200,000' ? "#287d8eff" :
     d === 'Between 10,000 and 50,000' ? "#4cc06cff" :
     "#fde725ff";
-}
+
 
 function highlightFeature(e) {
 var layer = e.target;
