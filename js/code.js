@@ -120,18 +120,3 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
-
-L.markers.on("click", function (event) {
-    // Assuming the clicked feature is a shape, not a point marker.
-    map.fitBounds(event.layer.getBounds());
-});
-
-document.getElementById('fit').addEventListener('click', function() {
-    map.fitBounds([[
-        32.958984,
-        -5.353521
-    ], [
-        43.50585,
-        5.615985
-    ]]);
-});
