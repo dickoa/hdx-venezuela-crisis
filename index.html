@@ -11,6 +11,9 @@
     <script src="js/jquery.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="data/crisis.js"></script>
+    <script src="data/aruba.js"></script>
+    <script src="data/curacao.js"></script>
+    <script src="data/trinidad.js"></script>
     <style>
       /* css to customize Leaflet default styles  */
       .popupCustom .leaflet-popup-tip,
@@ -29,8 +32,16 @@
         <div id="description"> What this crisis is about and how to read the map
         </div>
         <div id="header"></div>
-
-        <div class="popupCustom" id="map">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="miniMap" id="miniMap1"></div>
+                <div class="miniMap" id="miniMap2"></div>
+                <div class="miniMap" id="miniMap3"></div>
+            </div>
+            <div class="col-md-10">
+                <div class="popupCustom" id="map">
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/code.js"></script>
