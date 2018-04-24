@@ -9,12 +9,12 @@ if (feature.properties.destination == 'yes') {
     };
 } else if (feature.properties.destination == 'no') {
     return {
-        fillColor: '#006837',
+        fillColor: '#D3D3D3',
         weight: 2,
         opacity: 0.6,
         color: 'white',
         //dashArray: '3',
-        fillOpacity: 0.5
+        fillOpacity: 0.75
     };
 } else if (feature.properties.destination == 'bg') {
     return {
@@ -29,15 +29,14 @@ if (feature.properties.destination == 'yes') {
 }
 
 function getColor(d) {
-return d > 600000 ? '#800026' :
-    d > 300000 ? '#BD0026' :
-    d > 150000 ? '#E31A1C' :
-    d > 50000 ? '#FC4E2A' :
-    d > 20000 ? '#FD8D3C' :
-    d > 10000 ? '#FEB24C' :
-    d > 2500 ? '#FED976' :
-    '#FFEDA0';
-}
+  return d > 600000 ? '#440154ff' :
+    d > 300000 ? '#46307cff' :
+    d > 150000 ? '#375a8cff' :
+    d > 50000 ? '#287d8eff' :
+    d > 20000 ? '#24a086ff' :
+    d > 10000 ? '#4cc06cff' :
+    d > 2500 ? '#9ed93aff' :
+    '#fde725ff';
 
 function onEachFeature(feature, layer) {
 layer.on({
@@ -57,7 +56,7 @@ layer.on({
     mouseout: resetHighlight,
 });
 if (feature.properties.destination == 'yes') {
-    layer.bindPopup('<h6><strong>' + feature.properties.name + '</h6>' + numeral(feature.properties.venezuelan).format('0,0') + '</b></p>');
+    layer.bindPopup('<h6><strong>' + feature.properties.name + '</h6>' + numeral(feature.properties.venezuelan).format('0a) + '</b></p>');
 } else {
     layer.bindPopup('<p class="small"><strong>' + feature.properties.name + '</strong></p>');
 }
@@ -84,34 +83,31 @@ style: style,
 onEachFeature: onEachFeature
 }).addTo(map);
 
-
 legend.onAdd = function (map) {
-var div = L.DomUtil.create('div', 'info legend');
-labels = ['<strong>Categories</strong><br>'],
-    categories = ['More than 500,000', 'Between 200,000 and 300,000', 'Between 100,000 and 200,000', 'Between 50,000 and 100,000', 'Between 10,000 and 50,000', 'Less than 10,000'];
+  var div = L.DomUtil.create('div', 'info legend');
+  labels = ['<strong>Affecte people from Venezuela</strong><br>'],
+  categories = ['More than 500,000', 'Between 200,000 and 500,000', 'Between 50,000 and 200,000', 'Between 10,000 and 50,000', 'Less than 10,000'];
 
-for (var i = 0; i < categories.length; i++) {
+  for (var i = 0; i < categories.length; i++) {
 
     div.innerHTML +=
-        labels.push(
-            '<i style="background:' + getColor2(categories[i]) + '"></i> ' + categories[i] + '<br>');
+      labels.push(
+        '<i style="background:' + getColor2(categories[i]) + '"></i> ' + categories[i] + '<br>');
 
-}
-div.innerHTML = labels.join('<br>');
-return div;
+  }
+  div.innerHTML = labels.join('<br>');
+  return div;
 };
+
 
 legend.addTo(map);
 
 function getColor2(d) {
-return d === 'More than 500,000' ? "#de2d26" :
-    d === 'Between 200,000 and 300,000' ? "#377eb8" :
-    d === 'Between 100,000 and 200,000' ? "#4daf4a" :
-    d === 'Between 50,000 and 100,000' ? "#4daf4a" :
-    d === 'Between than 10,000 and 50,000' ? "#984ea3" :
-    "#ff7f00";
-}
-
+  return d === 'More than 500,000' ? "#440154ff" :
+    d === 'Between 200,000 and 500,000' ? "#46307cff" :
+    d === 'Between 50,000 and 200,000' ? "#287d8eff" :
+    d === 'Between 10,000 and 50,000' ? "#4cc06cff" :
+    "#fde725ff";
 
 
 function highlightFeature(e) {
