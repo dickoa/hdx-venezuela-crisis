@@ -45,11 +45,24 @@ function onEachFeature(feature, layer) {
     mouseout: resetHighlight,
   });
   if (feature.properties.destination == 'yes') {
-    layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4><h5>Number of people affected: <b>' + numeral(feature.properties.venezuelan).format('0a') + '</b></h5>');
+    layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4><h5>Number of people affected: <b>' + numeral(feature.properties.venezuelan).format('0a') + '</b></h5><h6>Date: <b>' + feature.properties.date + '</b></h6><h6>Source: <b>' + feature.properties.source + '</b></h6>');
   } else {
     layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4>');
   }
 }
+
+
+// function onEachFeatureMiniMap(feature, layer) {
+//   layer.on({
+//     mouseover: highlightFeature,
+//     mouseout: resetHighlight,
+//   });
+//   if (feature.properties.destination == 'yes') {
+//     layer.bindPopup('<small><strong>' + feature.properties.name + '</strong></small><b>' + numeral(feature.properties.venezuelan).format('0a') + '</b></br><small>Date: <b>' + feature.properties.date + '</b></br></small><small>Source: <b>' + feature.properties.source + '</b></small>');
+//   } else {
+//     layer.bindPopup('<h4><strong>' + feature.properties.name + '</strong></h4>');
+//   }
+// }
 
 function onEachFeatureMiniMap(feature, layer) {
   layer.on({
